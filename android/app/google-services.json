@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1023030787643",
+    "project_id": "sharing-car-67827",
+    "storage_bucket": "sharing-car-67827.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1023030787643:android:97dd8ea09597958820a61e",
+        "android_client_info": {
+          "package_name": "com.goviet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1023030787643-4loe7iu9grcgjp2nr2pmc4fro3tcgscl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.anonymous.GoViet",
+            "certificate_hash": "c80ac74dbaedc4ad40bdc852956cd5306e605dbf"
+          }
+        },
+        {
+          "client_id": "1023030787643-ke53v0b1pb3528ni38cdsrpq18dl4le6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCvBAyqQAJ1VNALQ3h_dOYH3rk1ZVGJFic"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1023030787643-ke53v0b1pb3528ni38cdsrpq18dl4le6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

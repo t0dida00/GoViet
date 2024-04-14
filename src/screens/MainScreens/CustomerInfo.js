@@ -2,6 +2,9 @@ import { View, Text, TextInput, Button, TouchableOpacity } from 'react-native';
 import React, { useState } from 'react'
 import styles from "./styles.js"
 import firestore from '@react-native-firebase/firestore';
+import { useDispatch, useSelector } from 'react-redux'; // Import useSelector and useDispatch
+import { updateUserInfo } from '../../../redux/actions/userAction.js';
+import { selectUser } from '../../../redux/selectors/authSelectors.js';
 
 export default function CustomerInfo({ navigation, route }) {
 
@@ -9,22 +12,12 @@ export default function CustomerInfo({ navigation, route }) {
     const [lastName, setLastName] = useState('');
     const [Email, setEmail] = useState('');
     const [phoneNumber, setPhoneNumber] = useState("+358401997250");
+    const dispatch = useDispatch(); // Initialize useDispatch hook
+    const state = useSelector(selectUser)
     // const {uid } = route.params
     const handleSave = () => {
-        // // You can perform actions with the user's input here
-        // firestore()
-        //     .collection('users')
-        //     .doc(uid)
-        //     .set({
-        //         name: firstName,
-        //         email:Email
-        //     })
-        //     .then(() => {
-        //         console.log('User added!');
-        //         navigation.navigate("MainScreen")
-        //     });
-     
-        // You can navigate to another screen or perform any other logic here
+        const userData = { ...state, name: firstName, email: Email, phone: phoneNumber }
+        dispatch(updateUserInfo(userData, navigation))
     };
     return (
         <View style={styles.container}>

@@ -9,49 +9,20 @@ import auth from '@react-native-firebase/auth';
 import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth"
 export default function PhoneNumber({ navigation }) {
     // If null, no SMS has been sent
-    const [number, setNumber] = useState('+358401997250');
+    const [number, setNumber] = useState('');
     const [selectedValue, setSelectedValue] = useState('+84');
     const inputRef = useRef(null);
-    const [initializing, setInitializing] = useState(true);
-    const [user, setUser] = useState();
-    const [confirm, setConfirm] = useState(null);
 
     // verification code (OTP - One-Time-Passcode)
-    const [code, setCode] = useState('');
+
     const onChangeText = (inputNumber) => {
         // Remove non-numeric characters using regular expression
         const cleanedText = inputNumber.replace(/[^0-9]/g, '');
         setNumber(cleanedText);
     };
-    // Handle login
-    function onAuthStateChanged(user) {
-        if (user) {
-            console.log(user)
-            // Some Android devices can automatically process the verification code (OTP) message, and the user would NOT need to enter the code.
-            // Actually, if he/she tries to enter it, he/she will get an error message because the code was already used in the background.
-            // In this function, make sure you hide the component(s) for entering the code and/or navigate away from this screen.
-            // It is also recommended to display a message to the user informing him/her that he/she has successfully logged in.
-        }
-    }
 
- 
 
-    // Handle the button press
-    // async function signInWithPhoneNumber(phoneNumber) {
-    //     const confirmation = await auth().signInWithPhoneNumber(phoneNumber);
-    //     console.log(confirmation)
-    //     setConfirm(confirmation);
-    // }
 
-    // async function confirmCode() {
-    //     console.log('clicked')
-    //     try {
-    //        const response = await confirm.confirm(code);
-    //        console.log(response)
-    //     } catch (error) {
-    //         console.log('Invalid code.');
-    //     }
-    // }
     useEffect(() => {
         if (inputRef.current) {
             // Focus the TextInput after the component has rendered
@@ -61,9 +32,9 @@ export default function PhoneNumber({ navigation }) {
 
     const GetVerifyCode = () => {
 
-        navigation.navigate('VerifyStep',{phoneNumber:number})
+        navigation.navigate('VerifyStep', { phoneNumber: selectedValue + number })
     }
-   
+
     return (
         <View style={styles.container}>
             <Text style={styles.text_4}>Enter you mobile phone</Text>

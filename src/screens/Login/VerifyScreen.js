@@ -1,5 +1,7 @@
 import { View, Text, SafeAreaView, TextInput, ActivityIndicator, Modal, Button } from 'react-native'
 import React, { useEffect, useRef, useState, } from 'react'
+import { loginSuccess, loginFailure } from '../../../redux/actions/authActions.js';
+
 import {
     CodeField,
     Cursor,
@@ -36,28 +38,6 @@ export default function VerifyScreen({ navigation, route }) {
 
         }
     }
-    // async function onAuthStateChanged(user) {
-    //     if (user) {
-    //         const { uid } = user;
-    //         try {
-    //             const documentSnapshot = await firestore()
-    //                 .collection('users')
-    //                 .doc(uid)
-    //                 .get();
-    //             if (documentSnapshot.exists) {
-    //                 // If user exists, navigate to the Profile screen
-    //                 navigation.navigate("MainScreen",{ screen: "Profile" });
-    //             } else {
-    //                                   // If user doesn't exist, navigate to the CustomerInfo screen
-    //                 navigation.navigate("CustomerInfo", { uid, isNewUser: true });
-    //             }
-    //         } catch (error) {
-    //             console.error('Error checking user existence: ', error);
-    //             // Handle error, such as showing an error message to the user
-    //         }
-    //     }
-    // }
-    
 
     useEffect(() => {
         // const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
@@ -74,17 +54,13 @@ export default function VerifyScreen({ navigation, route }) {
     async function confirmCode(code) {
         try {
             setLoading(true)
-
             await confirm.confirm(code);
             setLoading(false);
             // navigation.navigate("CustomerInfo")
-
         } catch (error) {
             setLoading(false)
             setError('Invalid code.')
             setShowModal(true)
-            console.log('Invalid code.');
-
         }
     }
     useEffect(() => {

@@ -23,6 +23,9 @@ const styles = StyleSheet.create({
         height: 250,
         justifyContent: "space-around"
     },
+    container_3: {
+        width: '55%'
+    },
     avatar: {
         marginRight: 10,
     },

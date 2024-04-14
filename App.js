@@ -3,15 +3,19 @@ import { StyleSheet, Text, View } from 'react-native';
 import NavigationWrapper from './src/navigation';
 import { firebase } from '@react-native-firebase/auth'; // Import Firebase Authentication
 import React, { useEffect } from 'react';
-import firestore from '@react-native-firebase/firestore';
-import { useNavigation } from '@react-navigation/native';
+import store from './redux/store';
+
+import { Provider } from 'react-redux';
 
 export default function App() {
   // firebase.initializeApp(firebaseConfig);
-  
+
 
   return (
-    <NavigationWrapper />
+    <Provider store={store}>
+      <NavigationWrapper />
+    </Provider>
+
   );
 }
 

@@ -12,6 +12,7 @@ const BottomTabNavigator = () => {
             <Tab.Screen name="Searching" component={BookTrip} options={{ headerShown: false }} />
 
             <Tab.Screen name="Profile" component={Profile} />
+            
         </Tab.Navigator>
     );
 };

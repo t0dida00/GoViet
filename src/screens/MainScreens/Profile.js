@@ -3,18 +3,18 @@ import React from 'react'
 import { Avatar, Icon } from 'react-native-elements'; // Make sure you import Avatar and Icon from the correct library
 import auth from '@react-native-firebase/auth';
 import { useSelector } from 'react-redux';
-import { selectUser } from '../../../redux/selectors/authSelectors';
+import { userData } from '../../../redux/selectors/authSelectors';
 
 import styles from "./ProfileStyle.js"
 
-const Profile = ({ avatarUrl, name, email, phoneNumber, onEditPress, navigation }) => {
+const Profile = ({ avatarUrl, phoneNumber, onEditPress, navigation }) => {
     const dismissKeyboard = () => {
         Keyboard.dismiss();
     };
 
-    const user = useSelector(selectUser);
-
-    console.log(user)
+    const user = useSelector(userData);
+    const {name, email, phone} = user
+   
     const handleSignOut = async () => {
         try {
             await auth().signOut();
@@ -39,9 +39,9 @@ const Profile = ({ avatarUrl, name, email, phoneNumber, onEditPress, navigation 
                             containerStyle={styles.avatar}
                         />
                         <View style={styles.container_3}>
-                            <Text style={styles.name}>{user?.name}</Text>
-                            <Text style={styles.email}>{user?.email}</Text>
-                            <Text style={styles.phoneNumber}>{user?.phone}</Text>
+                            <Text style={styles.name}>{name}</Text>
+                            <Text style={styles.email}>{email}</Text>
+                            <Text style={styles.phoneNumber}>{phone}</Text>
                         </View>
                         <TouchableOpacity onPress={onEditPress} style={styles.editButton}>
                             <Icon name="edit" type="material" color="#000" />

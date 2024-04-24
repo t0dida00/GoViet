@@ -8,6 +8,8 @@ import CustomerInfo from '../screens/MainScreens/CustomerInfo';
 import Profile from '../screens/MainScreens/Profile';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import BottomTabNavigator from './bottomNavigation';
+import RideList from '../screens/MainScreens/RideList';
+import TripDetail from '../screens/MainScreens/TripDetail';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -24,6 +26,8 @@ const NavigationWrapper = () => {
                 <Stack.Screen name="CustomerInfo" component={CustomerInfo} options={{ headerShown: false }} />
                 {/* <Stack.Screen name="MainScreen" component={Profile} options={{ headerShown: false }} /> */}
                 <Stack.Screen name="MainScreen" component={BottomTabNavigator} options={{ headerShown: false }} />
+                <Stack.Screen name="RideList" component={RideList}   options={{ headerTitle: "Ride List", headerTitleAlign: 'center' }} />
+                <Stack.Screen name="TripDetail" component={TripDetail}   options={{ headerTitle: "Ride Detail", headerTitleAlign: 'center' }} />
 
             </Stack.Navigator>
         </NavigationContainer>

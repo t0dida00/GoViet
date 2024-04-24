@@ -21,8 +21,6 @@ export default function PhoneNumber({ navigation }) {
         setNumber(cleanedText);
     };
 
-
-
     useEffect(() => {
         if (inputRef.current) {
             // Focus the TextInput after the component has rendered

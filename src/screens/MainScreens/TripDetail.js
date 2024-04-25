@@ -13,7 +13,7 @@ const data = [{
     email:"ddkhoa97@gmail.com",
     phone:"+358401997250"
   }]
-export default function TripDetail() {
+export default function TripDetail({navigation}) {
     const { id, avatar, from, to, date, price, name,email,phone } = data[0];
 
   return (
@@ -82,7 +82,7 @@ export default function TripDetail() {
           <Text style={styles.date}>Total price (1 passenger): </Text>
           <Text style={styles.money}> ${price}</Text>
           </View>
-          <TouchableOpacity style={styles.submit_button} >
+          <TouchableOpacity style={styles.submit_button} onPress={()=>{navigation.navigate("Payment")}} >
                             <Text style={styles.buttonText}>Continue</Text>
                         </TouchableOpacity>
     </ScrollView>

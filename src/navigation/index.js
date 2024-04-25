@@ -10,6 +10,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import BottomTabNavigator from './bottomNavigation';
 import RideList from '../screens/MainScreens/RideList';
 import TripDetail from '../screens/MainScreens/TripDetail';
+import Payment from '../screens/MainScreens/Payment';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -28,6 +29,7 @@ const NavigationWrapper = () => {
                 <Stack.Screen name="MainScreen" component={BottomTabNavigator} options={{ headerShown: false }} />
                 <Stack.Screen name="RideList" component={RideList}   options={{ headerTitle: "Ride List", headerTitleAlign: 'center' }} />
                 <Stack.Screen name="TripDetail" component={TripDetail}   options={{ headerTitle: "Ride Detail", headerTitleAlign: 'center' }} />
+                <Stack.Screen name="Payment" component={Payment}   options={{ headerTitle: "Select Payment Method", headerTitleAlign: 'center' }} />
 
             </Stack.Navigator>
         </NavigationContainer>

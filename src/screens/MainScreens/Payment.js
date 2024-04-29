@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity } from 'react-native'
+import { View, Text, TouchableOpacity, Modal } from 'react-native'
 import React, { useState } from 'react'
 import styles from './PaymentStyle.js'
 import { MaterialIcons } from '@expo/vector-icons'; // Import the MaterialIcons from Expo
@@ -10,8 +10,31 @@ export default function Payment() {
     setSelectedOption(option);
     // Perform any other actions based on the selected option
   };
+  const closeModal = () => {
+    setModalVisible(false);
+  };
+  const [modalVisible, setModalVisible] = useState(false);
+
   return (
     <View style={styles.container}>
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={closeModal}
+      >
+        <View style={styles.modalContainer}>
+          <View style={styles.modalContent}>
+          <MaterialIcons name="check-circle" size={18} color="green" />
+          <Text style={styles.modal_title}>Booking requested !</Text>
+           <Text style={styles.modal_content}>Your booking request has been sent successfully. You will be notified once driver approve it.</Text>
+            <TouchableOpacity onPress={closeModal}>
+              <Text style={styles.closeButton}>View Rides</Text>
+            
+            </TouchableOpacity>
+          </View>
+        </View>
+      </Modal>
      <View style={styles.payment_box}>
         <View style={styles.card}>
         <TouchableOpacity
@@ -54,7 +77,7 @@ export default function Payment() {
         </Text>
      </View>
      <View style={styles.button_2}>
-     <TouchableOpacity style={styles.submit_button}  >
+     <TouchableOpacity style={styles.submit_button} onPress={()=>{ setModalVisible(true)}}  >
                             <Text style={styles.buttonText}>Complete</Text>
                         </TouchableOpacity>
    

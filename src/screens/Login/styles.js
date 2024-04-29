@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
     },
     text_5: { color: "#FFF", fontSize: 18, },
     text_6: {
-        fontSize: 16,
+    
         marginTop: 10,
         marginBottom: 20
     },
@@ -119,8 +119,8 @@ const styles = StyleSheet.create({
     title: { textAlign: 'center', fontSize: 30 },
     codeFieldRoot: { marginTop: 20 },
     cell: {
-        width: 50,
-        height: 50,
+        width: 40,
+        height: 40,
         lineHeight: 46,
         fontSize: 24,
         borderWidth: 2,

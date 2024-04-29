@@ -68,8 +68,8 @@ export default function TripDetail({navigation}) {
                         />
                         <View>
                         <Text style={styles.location}>{name}</Text>
-                        <Text style={styles.location}>{email}</Text>
-                        <Text style={styles.location}>{phone}</Text>
+                        <Text >{email}</Text>
+                        <Text>{phone}</Text>
 
                         </View>
             </View>

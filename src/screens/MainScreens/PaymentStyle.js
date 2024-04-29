@@ -3,7 +3,9 @@ import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
     container: {
       flex:1,
-      paddingHorizontal:20
+      paddingHorizontal:20,
+      justifyContent:'center',
+      gap:30
     },
     card_container:{
        flexDirection:'column',
@@ -11,13 +13,14 @@ const styles = StyleSheet.create({
       marginBottom:20
     },
     card: {
-        borderWidth: 1,
-        borderColor: '#ccc',
-        borderRadius: 8,
+       
         padding: 30,
         marginBottom: 10,
         backgroundColor: '#fff',
         gap:10,
+        borderWidth: 1,
+        borderColor: '#ccc',
+        borderRadius: 8,
         shadowColor: '#000',
         shadowOffset: {
             width: 0,
@@ -44,7 +47,7 @@ const styles = StyleSheet.create({
         textAlign: 'center'
     },
     payment_box:{
-      flex:0.6,
+   
       justifyContent:'center',
       alignItems:'center'
     },separator:{
@@ -63,9 +66,35 @@ const styles = StyleSheet.create({
       color:'red'
     },
     button_2:{
-      flex:0.4,
+     
       justifyContent:'center',
       alignItems:'center'
-    }
+    },
+    modalContainer: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundColor: '#FFF',
+  },
+  modalContent: {
+      backgroundColor: 'white',
+      padding: 20,
+      borderRadius: 10,
+      alignItems: 'center',
+    width:'80%'
+    
+  },
+  closeButton: {
+      color: 'blue',
+      marginTop: 10,
+      
+  },
+  modal_title:{
+    fontWeight:'600'
+  },
+  modal_content:{
+    textAlign:'center',
+
+  }
 });
 export default styles;

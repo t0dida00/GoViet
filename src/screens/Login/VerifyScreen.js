@@ -48,16 +48,19 @@ export default function VerifyScreen({ navigation, route }) {
     // Handle the button press
     async function signInWithPhoneNumber(phoneNumber) {
         const confirmation = await auth().signInWithPhoneNumber(phoneNumber);
+        console.log(confirmation)
         setConfirm(confirmation);
     }
 
     async function confirmCode(code) {
+        console.log(code)
         try {
             setLoading(true)
             await confirm.confirm(code);
             setLoading(false);
             // navigation.navigate("CustomerInfo")
         } catch (error) {
+            console.log(error)
             setLoading(false)
             setError('Invalid code.')
             setShowModal(true)

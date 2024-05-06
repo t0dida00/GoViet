@@ -11,6 +11,8 @@ import BottomTabNavigator from './bottomNavigation';
 import RideList from '../screens/MainScreens/RideList';
 import TripDetail from '../screens/MainScreens/TripDetail';
 import Payment from '../screens/MainScreens/Payment';
+import PublishTrip_2 from '../screens/MainScreens/PublishTrip_2';
+import ReviewTrip from '../screens/MainScreens/ReviewTrip';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -30,6 +32,8 @@ const NavigationWrapper = () => {
                 <Stack.Screen name="RideList" component={RideList}   options={{ headerTitle: "Ride List", headerTitleAlign: 'center' }} />
                 <Stack.Screen name="TripDetail" component={TripDetail}   options={{ headerTitle: "Ride Detail", headerTitleAlign: 'center' }} />
                 <Stack.Screen name="Payment" component={Payment}   options={{ headerTitle: "Select Payment Method", headerTitleAlign: 'center' }} />
+                <Stack.Screen name="PublishTrip2" component={PublishTrip_2}   options={{ headerTitle: "Publish a Ride", headerTitleAlign: 'center' }} />
+                <Stack.Screen name="Review" component={ReviewTrip}   options={{ headerTitle: "Review your ride", headerTitleAlign: 'center' }} />
 
             </Stack.Navigator>
         </NavigationContainer>

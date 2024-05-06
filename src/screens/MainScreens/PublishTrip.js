@@ -11,7 +11,7 @@ import { coordinatesWithinRadius } from '../../helper/CoordinateWithinRadius';
 
 const GOOGLE_PLACES_API_KEY = "AIzaSyDUCs8ufGs484Ue8hIdWJKglOqklpGdNGo";
 
-const PublishTrip = () => {
+const PublishTrip = ({navigation}) => {
     const [position, setPosition] = useState(null);
     const [loading, setLoading] = useState(true);
     const [from, setFrom] = useState(null)
@@ -50,8 +50,8 @@ const PublishTrip = () => {
                 edgePadding: { top: 100, right: 100, bottom: 100, left: 100 },
                 animated: true,
             });
-            const coordinatesWithin5km = coordinatesWithinRadius(from, coordinates_2);
-            console.log('coordinatesWithin5km: ',coordinatesWithin5km);
+            // const coordinatesWithin5km = coordinatesWithinRadius(from, coordinates_2);
+            // console.log('coordinatesWithin5km: ',coordinatesWithin5km);
 
         }
     }, [from, to, position]);
@@ -67,11 +67,11 @@ const PublishTrip = () => {
         }
     };
     const handleOkPress = () => {
-        if (from && to) {
+        if (from && to || 1) {
             // const coordinates = await fetchRouteCoordinates(fromLocation, toLocation);
             dispatch(setToLocation(to));
             dispatch(setFromLocation(from));
-
+            navigation.navigate("PublishTrip2")
             // Perform any action after pressing "Ok"
         } else {
             alert("Please select both locations.");

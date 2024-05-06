@@ -5,6 +5,7 @@ import Profile from '../screens/MainScreens/Profile';
 import BookTrip from '../screens/MainScreens/BookTrip';
 import { Icon } from 'react-native-elements'; // Import Icon component from react-native-elements
 import MyRides from '../screens/MainScreens/MyRides';
+import PublishTrip from '../screens/MainScreens/PublishTrip';
 
 const Tab = createBottomTabNavigator();
 
@@ -12,7 +13,7 @@ const BottomTabNavigator = () => {
     return (
         <Tab.Navigator>
             <Tab.Screen name="Searching" component={BookTrip} options={{
-                headerShown: false,tabBarLabel: () => null, tabBarIcon: ({ focused }) => (
+                headerShown: false, tabBarLabel: () => null, tabBarIcon: ({ focused }) => (
                     <Icon
                         name='search'
                         type='material'
@@ -20,8 +21,17 @@ const BottomTabNavigator = () => {
                     />
                 ),
             }} />
+              <Tab.Screen name="Publish" component={PublishTrip} options={{
+                headerShown: false, tabBarLabel: () => null, tabBarIcon: ({ focused }) => (
+                    <Icon
+                        name='add-circle'
+                        type='material'
+                        color={focused ? 'blue' : 'gray'}
+                    />
+                ),
+            }} />
             <Tab.Screen name="My Rides" component={MyRides} options={{
-                headerTitle: "My Rides", headerTitleAlign:"center", tabBarIcon: ({ focused }) => (
+                headerTitle: "My Rides", headerTitleAlign: "center", tabBarIcon: ({ focused }) => (
                     <Icon
                         name='directions-car'
                         type='material'
@@ -29,9 +39,9 @@ const BottomTabNavigator = () => {
                     />
                 ),
                 tabBarLabel: () => null,
-            }} />  
+            }} />
             <Tab.Screen name="Profile" component={Profile} options={{
-               headerTitleAlign:"center", tabBarLabel: () => null,tabBarIcon: ({ focused }) => (
+                headerTitleAlign: "center", tabBarLabel: () => null, tabBarIcon: ({ focused }) => (
                     <Icon
                         name='person'
                         type='material'
@@ -39,7 +49,7 @@ const BottomTabNavigator = () => {
                     />
                 ),
             }} />
-
+          
         </Tab.Navigator>
     );
 };

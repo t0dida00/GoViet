@@ -2,10 +2,12 @@ import { View, Text, TouchableOpacity, Modal } from 'react-native'
 import React, { useState } from 'react'
 import styles from './PaymentStyle.js'
 import { MaterialIcons } from '@expo/vector-icons'; // Import the MaterialIcons from Expo
+import { updateTrip } from '../../api/Trip.js';
 
-export default function Payment() {
+
+export default function Payment({navigation,route}) {
   const [selectedOption, setSelectedOption] = useState('Cash');
-
+  const { data,item } = route.params;
   const handleOptionSelect = (option) => {
     setSelectedOption(option);
     // Perform any other actions based on the selected option
@@ -15,6 +17,11 @@ export default function Payment() {
   };
   const [modalVisible, setModalVisible] = useState(false);
 
+  const BookTrip = () =>{
+    updateTrip(data.id,item.id)
+    // dispatch(setSelectedTrip(item))
+    setModalVisible(true)
+  }
   return (
     <View style={styles.container}>
       <Modal
@@ -28,7 +35,7 @@ export default function Payment() {
           <MaterialIcons name="check-circle" size={18} color="green" />
           <Text style={styles.modal_title}>Booking requested !</Text>
            <Text style={styles.modal_content}>Your booking request has been sent successfully. You will be notified once driver approve it.</Text>
-            <TouchableOpacity onPress={closeModal}>
+           <TouchableOpacity onPress={() => { closeModal(); navigation.navigate("MainScreen", { screen: "My Rides" }); }}>
               <Text style={styles.closeButton}>View Rides</Text>
             
             </TouchableOpacity>
@@ -77,7 +84,7 @@ export default function Payment() {
         </Text>
      </View>
      <View style={styles.button_2}>
-     <TouchableOpacity style={styles.submit_button} onPress={()=>{ setModalVisible(true)}}  >
+     <TouchableOpacity style={styles.submit_button} onPress={()=>{BookTrip() }}  >
                             <Text style={styles.buttonText}>Complete</Text>
                         </TouchableOpacity>
    

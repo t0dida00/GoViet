@@ -67,8 +67,8 @@ const PublishTrip = ({navigation}) => {
         }
     };
     const handleOkPress = () => {
-        if (from && to || 1) {
-            // const coordinates = await fetchRouteCoordinates(fromLocation, toLocation);
+        if (from && to ) {
+            //save coordinates to redux
             dispatch(setToLocation(to));
             dispatch(setFromLocation(from));
             navigation.navigate("PublishTrip2")
@@ -77,6 +77,8 @@ const PublishTrip = ({navigation}) => {
             alert("Please select both locations.");
         }
     };
+
+
     const clearSearchFrom = () => {
         // Clear the search input
         if (googlePlacesRef.current) {
@@ -144,6 +146,8 @@ const PublishTrip = ({navigation}) => {
                         />
                     )}
                 />
+
+            
                 <FlatList
                     data={[{ key: 'GooglePlacesAutocomplete' }]}
                     keyboardShouldPersistTaps="handled"

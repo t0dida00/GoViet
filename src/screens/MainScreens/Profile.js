@@ -18,7 +18,6 @@ const Profile = ({ avatarUrl, phoneNumber, onEditPress, navigation }) => {
     const handleSignOut = async () => {
         try {
             await auth().signOut();
-            console.log('User signed out successfully');
             navigation.navigate("WelcomeScreen")
             // Optionally, navigate to a different screen after sign-out
         } catch (error) {

@@ -15,7 +15,7 @@ export default function ReviewTrip() {
     const handleDateChange = (newDate) => {
         setDate(newDate);
     };
-
+    
     const handleTimeChange = (newTime) => {
         setTime(newTime);
     };

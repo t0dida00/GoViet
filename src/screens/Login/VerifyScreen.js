@@ -16,11 +16,13 @@ const CELL_COUNT = 6;
 import styles from "./styles.js"
 
 export default function VerifyScreen({ navigation, route }) {
+    //state for OTP code
     const [value, setValue] = useState('');
     const [loading, setLoading] = useState(false)
     const ref = useBlurOnFulfill({ value, cellCount: CELL_COUNT });
     const { phoneNumber } = route.params
     const inputRef = useRef(null);
+
     const [confirm, setConfirm] = useState(null);
     const [code, setCode] = useState('');
     const [error, setError] = useState(null)
@@ -29,8 +31,8 @@ export default function VerifyScreen({ navigation, route }) {
     const [props, getCellOnLayoutHandler] = useClearByFocusCell({
         value,
         setValue,
-    });
-
+    }); 
+    //If the length of the code = 6, confirm OTP which is sent to phone number before
     const onChangeText = (input) => {
         setCode(input)
         if (input.length === 6) {
@@ -38,29 +40,27 @@ export default function VerifyScreen({ navigation, route }) {
 
         }
     }
-
+    //When changing screen, signInWithPhoneNumber is called to send OTP to phone number
     useEffect(() => {
         // const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
         signInWithPhoneNumber(phoneNumber)
         // return subscriber; // unsubscribe on unmount
     }, []);
 
-    // Handle the button press
+    //Login by phone number provided by Firebase/auth
     async function signInWithPhoneNumber(phoneNumber) {
         const confirmation = await auth().signInWithPhoneNumber(phoneNumber);
-        console.log(confirmation)
         setConfirm(confirmation);
     }
 
+    //function to check OTP 
     async function confirmCode(code) {
-        console.log(code)
         try {
             setLoading(true)
             await confirm.confirm(code);
             setLoading(false);
             // navigation.navigate("CustomerInfo")
         } catch (error) {
-            console.log(error)
             setLoading(false)
             setError('Invalid code.')
             setShowModal(true)

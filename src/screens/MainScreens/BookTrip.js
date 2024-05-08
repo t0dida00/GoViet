@@ -2,6 +2,8 @@ import { View, Text, Image, TouchableOpacity, TextInput, KeyboardAvoidingView, S
 import React, { useState } from 'react'
 import styles from "./BookTripStyle"
 import { Calendar } from 'react-native-calendars';
+import { useSelector } from 'react-redux';
+import { trip } from '../../../redux/selectors/authSelectors';
 
 export default function BookTrip({navigation}) {
     const [startLocation, setStartLocation] = useState('');
@@ -10,7 +12,7 @@ export default function BookTrip({navigation}) {
     const [count, setCount] = useState(1);
     const [showCalendar, setShowCalendar] = useState(false);
     const [selectedDate, setSelectedDate] = useState(new Date().toISOString().split('T')[0]);
-   
+  
     const handleSubmit = () => {
         const tripData={
             "from": startLocation,
@@ -18,14 +20,12 @@ export default function BookTrip({navigation}) {
             "date":selectedDate,
             'person':count
         }
-        console.log(tripData)
         navigation.navigate("RideList")
         // Handle form submission, for example, sending the data to backend or navigating to another screen
 
     };
     const onDayPress = (day) => {
         setSelectedDate(day.dateString);
-        console.log(day.dateString)
         setShowCalendar(false);
 
     };

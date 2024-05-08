@@ -1,11 +1,14 @@
 import { combineReducers } from 'redux';
 import authReducer from './authReducer';
 import publishReducer from './publishReducer';
-import userReducer from './userReducer';
+import tripReducer from './tripReducer';
+// import userReducer from './userReducer';
 
 const rootReducer = combineReducers({
     user: authReducer,
-    publish: publishReducer
+    publish: publishReducer,
+    trip:tripReducer,
+    
     // user: userReducer,
     // other reducers can be added here
 });

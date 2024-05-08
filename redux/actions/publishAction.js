@@ -10,3 +10,8 @@ export const setFromLocation = (location) => ({
     payload: location
 });
 
+export const setAdditional = (data) => ({
+    type: SET_ADDITIONAL_DATA,
+    payload: data
+});
+

@@ -16,7 +16,7 @@ export default function WelcomeScreen({ navigation }) {
     const unsubscribe = firebase.auth().onAuthStateChanged(onAuthStateChanged);
     return () => unsubscribe(); // Cleanup the event listener on unmount
   }, []);
-
+  //Check login
   const onAuthStateChanged = async (user) => {
     if (user) {
       const { uid } = user;

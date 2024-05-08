@@ -8,9 +8,11 @@ import auth from '@react-native-firebase/auth';
 
 import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth"
 export default function PhoneNumber({ navigation }) {
-    // If null, no SMS has been sent
+    // State for phone number
     const [number, setNumber] = useState('');
+    //set prefix Vietnam phone number as default
     const [selectedValue, setSelectedValue] = useState('+84');
+    //Always focus on Text Input field
     const inputRef = useRef(null);
 
     // verification code (OTP - One-Time-Passcode)
@@ -28,6 +30,7 @@ export default function PhoneNumber({ navigation }) {
         }
     }, []); // Run this effect only once after the initial render
 
+    //Change screen and pass the phone number
     const GetVerifyCode = () => {
 
         navigation.navigate('VerifyStep', { phoneNumber: selectedValue + number })

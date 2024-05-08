@@ -4,6 +4,7 @@ import { Calendar } from 'react-native-calendars';
 import styles from './PublishTrip_2Style';
 import { Dropdown } from 'react-native-element-dropdown';
 import { TextInput } from 'react-native-gesture-handler';
+import { useDispatch, useSelector } from 'react-redux';
 
 export default function PublishTrip_2({navigation}) {
   const [showCalendar, setShowCalendar] = useState(false);
@@ -11,14 +12,16 @@ export default function PublishTrip_2({navigation}) {
   const [selectedTime, setSelectedTime] = useState('00:00');
   const [count, setCount] = useState(1);
   const [selectedCurrency, setSelectedCurrency] = useState('EUR'); // Default currency
+  const [amount, setAmount] = useState('');
+  const publish = useSelector((state)=>state.publish)
   const currencies = ['EUR', 'USD', 'VND'];
+  const dispatch=useDispatch()
   const handleCurrencySelect = (currency) => {
     setSelectedCurrency(currency);
     setShowModal(false);
   };
   const onDayPress = (day) => {
     setSelectedDate(day.dateString);
-    console.log(day.dateString)
     setShowCalendar(false);
 
   };
@@ -53,6 +56,14 @@ export default function PublishTrip_2({navigation}) {
   };
 
   const handleSubmit = () => {
+
+    const additional = {
+      date: selectedDate,
+      time: selectedTime,
+      price: amount
+    }
+    dispatch()
+    console.log(additional)
        navigation.navigate("Review")
     // Handle form submission, for example, sending the data to backend or navigating to another screen
 
@@ -117,6 +128,8 @@ export default function PublishTrip_2({navigation}) {
       // Add styles for textInput
       placeholder="Enter amount"
       keyboardType="numeric"
+      value={amount}
+      onChangeText={(am)=>setAmount(am)}
     />
             <Dropdown
           data={currencies.map(currency => ({ label: currency, value: currency }))}
